@@ -4,15 +4,15 @@ import useAxiosPublic from "./useAxiosPublic";
 const useTask = () => {
     const axiosPublic = useAxiosPublic();
 
-    const {data: menu = [], isPending: loading, refetch} = useQuery({
-        queryKey: ['menu'], 
+    const {data: task = [], isPending: loading, refetch} = useQuery({
+        queryKey: ['task'], 
         queryFn: async() =>{
-            const res = await axiosPublic.get('/menu');
+            const res = await axiosPublic.get('/task');
             return res.data;
         }
     })
 
-    return [menu, loading, refetch]
+    return [task, loading, refetch]
 
 }
 

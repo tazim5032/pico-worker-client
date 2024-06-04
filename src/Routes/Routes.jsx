@@ -5,6 +5,7 @@ import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AddTask from "../Pages/Dashboard/Author/AddTask";
 import MyTaskList from "../Pages/Dashboard/Author/MyTaskList";
+import UpdateTask from "../Pages/Dashboard/Author/UpdateTask";
 import TaskList from "../Pages/Dashboard/Cart/Worker/TaskList";
 import UserSubmissions from "../Pages/Dashboard/Cart/Worker/UserSubmissions";
 import Home from "../Pages/Home/Home";
@@ -53,6 +54,11 @@ import SignUp from "../Pages/Signup/SignUp";
         {
           path: 'my-task-list',
           element: <MyTaskList></MyTaskList>
+        },
+        {
+          path: 'updateTask/:id',
+          element: <UpdateTask></UpdateTask>,
+          loader: ({ params }) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
         },
 
 

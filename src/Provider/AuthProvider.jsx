@@ -6,8 +6,6 @@ import {
 import { app } from "../Firebase/firebase.config";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 
-
-
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
@@ -37,16 +35,16 @@ const AuthProvider = ({ children }) => {
     }
 
 
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
+
     const updateUserProfile = (name, image) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: image,
         })
-    }
-
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
     }
 
     useEffect(() => {

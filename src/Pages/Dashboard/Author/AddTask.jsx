@@ -21,7 +21,7 @@ const AddTask = () => {
     const {user} = useAuth();
     const navigate = useNavigate();
 
-    console.log(user.displayName,user.email);
+   // console.log(user.displayName,user.email);
 
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();

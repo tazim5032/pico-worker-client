@@ -43,8 +43,11 @@ const MyTaskList = () => {
 
                     Swal.fire({     
                         icon: "success",
-                        title: `${item.name} has been deleted`,
+                        title: `${item.title} has been deleted`,
                     });
+
+                    const remaining = tasks.filter(cof => cof._id != item._id);
+                    setTasks(remaining);
                 }
             }
         });
