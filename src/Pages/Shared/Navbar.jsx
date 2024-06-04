@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-
+import { FaCoins } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
-
 
 const Navbar = () => {
 
@@ -45,26 +44,26 @@ const Navbar = () => {
                             {
                                 user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
                             }
-                            {/* <li>
-                                <Link to='/dashboard/cart'>
-                                    <button className="btn border-0">
-                                        <FaShoppingCart />
-                                        <div className="badge badge-secondary">+{cart.length}</div>
+                            <li>
+                                <Link to='/dashboard/userSubmissions'>
+                                    <button className="btn">
+                                        <FaCoins className="text-yellow-500 text-xl"/>
+                                        <div className="badge badge-secondary">+0</div>
                                     </button>
                                 </Link>
-                            </li> */}
+                            </li>
 
 
                             {
                                 user ? <>
                                     {/* <span>{user.displayName}</span> */}
-                                   
-                                        <li><Link to='/signup'>Profile</Link></li>
-                                         <button onClick={handleLogOut}
-                                            className="btn btn-ghost">Logout</button>
-                                        
 
-                                   
+                                    <li><Link to='/signup'>Profile</Link></li>
+                                    <button onClick={handleLogOut}
+                                        className="btn btn-ghost">Logout</button>
+
+
+
 
                                 </> : <>
                                     <li><Link to='/signup'>Watch Demo</Link></li>
@@ -76,7 +75,7 @@ const Navbar = () => {
 
                         </ul>
                     </div>
-                    
+
                     <Link className="btn btn-ghost text-xl" to='/'>MicroTask</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -96,26 +95,26 @@ const Navbar = () => {
                         {
                             user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
                         }
-                        {/* <li>
-                            <Link to='/dashboard/cart'>
-                                <button className="btn border-0">
-                                    <FaShoppingCart />
-                                    <div className="badge badge-secondary">+{cart.length}</div>
+                        <li>
+                            <Link to='/dashboard/userSubmissions'>
+                                <button className="btn">
+                                    <FaCoins className="text-yellow-500 text-xl" />
+                                    <div className="badge badge-secondary">+0</div>
                                 </button>
                             </Link>
-                        </li> */}
+                        </li>
                         {
                             user ? <>
                                 {/* <span>{user.displayName}</span> */}
-                               
-                                    <li><Link to='/signup'>Profile</Link></li>
-                                    
-                                    <button onClick={handleLogOut}
-                                            className="btn btn-ghost">Logout</button>
-                                        
-                                    
 
-                                
+                                <li><Link to='/signup'>Profile</Link></li>
+
+                                <button onClick={handleLogOut}
+                                    className="btn btn-ghost">Logout</button>
+
+
+
+
                             </> : <>
                                 <li><Link to='/signup'>Watch Demo</Link></li>
                                 <li><Link to='/login'>Login</Link></li>

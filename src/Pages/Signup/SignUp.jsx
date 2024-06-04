@@ -27,7 +27,7 @@ const SignUp = () => {
     const from = '/login';
 
     const onSubmit = (data) => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        const {  accountType } = data;        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         if (!passwordRegex.test(data.password)) {
             // Password doesn't meet requirements
             Swal.fire({
@@ -47,6 +47,7 @@ const SignUp = () => {
                         const userInfo = {
                             name: data.fullName,
                             email: data.email,
+                            accountType: accountType,
                         }
 
                         axiosPublic.post('/users', userInfo)
@@ -67,6 +68,11 @@ const SignUp = () => {
             })
             .catch(error => {
                 console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Opps',
+                    text: 'User Already Exist!!',
+                });
             });
     }
 
@@ -112,6 +118,15 @@ const SignUp = () => {
                                 {...register("photo", { required: true })}
                             />
                             {errors.photo && <span className="text-red-600">Photo URL is Required</span>}
+                        </div>
+                        <div className="form-control mt-4">
+                            <label className="label">Account Type</label>
+                            <select className="select select-bordered" {...register("accountType", { required: true })}>
+                                <option value="">Select Account Type</option>
+                                <option value="worker">Worker</option>
+                                <option value="taskCreator">Task Creator</option>
+                            </select>
+                            {errors.accountType && <span className="text-red-600">Please select an Account Type</span>}
                         </div>
                         <div className="form-control relative">
                             <label className="label">
