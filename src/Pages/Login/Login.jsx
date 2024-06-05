@@ -46,6 +46,8 @@ const Login = () => {
                         text: 'Login Successful!',
                     });
 
+                    navigate(from, {replace: true})
+
 
                 }
                 else {
