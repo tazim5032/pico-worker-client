@@ -27,7 +27,8 @@ const SignUp = () => {
     const from = '/login';
 
     const onSubmit = (data) => {
-        const {  accountType } = data;        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        const {  accountType } = data;        
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         if (!passwordRegex.test(data.password)) {
             // Password doesn't meet requirements
             Swal.fire({
@@ -43,11 +44,16 @@ const SignUp = () => {
             .then(() => {
                 updateUserProfile(data.fullName, data.photo)
                     .then(() => {
+                        let coin = 50;
+                        if(accountType === 'worker'){
+                            coin = 10;
+                        }
                         //user entry in db
                         const userInfo = {
                             name: data.fullName,
                             email: data.email,
                             accountType: accountType,
+                            coin: coin,
                         }
 
                         axiosPublic.post('/users', userInfo)
@@ -82,7 +88,7 @@ const SignUp = () => {
             <Helmet>
                 <title>Bistro Boss | Signup</title>
             </Helmet>
-            <h1 className="text-2xl text-center my-10 pt-6">Please Register</h1>
+            <h1 className="text-2xl text-center my-10 pt-6 ">Please Register</h1>
 
             <div className="hero-content  w-full sm:w-1/3 rounded-xl">
                 <div className="card w-full shadow-2xl bg-red-100  p-2 sm:p-4">

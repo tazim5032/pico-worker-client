@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { data } from 'autoprefixer';
-import { FaCoins } from 'react-icons/fa';
+
 const Details = () => {
     const { id } = useParams();
 

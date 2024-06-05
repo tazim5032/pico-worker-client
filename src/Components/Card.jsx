@@ -1,16 +1,8 @@
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import { motion } from "framer-motion";
-import useAuth from "../Hooks/useAuth";
 import { FaCoins } from "react-icons/fa";
 
 const Card = ({ item }) => {
-
-    const { user } = useAuth();
-
-    //const { _id, title, difficulty, description, marks, deadline, photo, username, email } = item;
-
-
 
     return (
         <motion.div

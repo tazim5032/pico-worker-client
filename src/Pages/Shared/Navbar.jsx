@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
 import { FaCoins } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+//import useCoin from "../../Hooks/useCoin";
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
     //const [isAdmin] = useAdmin();
-    //const [cart] = useCart();
+    // const [cart] = useCoin(); 
+    const axiosSecure = useAxiosSecure();
+    const [users, setUsers] = useState([]);
+
+    useEffect(  () => {
+        getData()
+    }, [user])
+
+    const getData = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setUsers(data)
+    }
+
+    console.log(users?.coin);
 
     const handleLogOut = () => {
         logOut()
@@ -47,8 +64,8 @@ const Navbar = () => {
                             <li>
                                 <Link to='/dashboard/userSubmissions'>
                                     <button className="btn">
-                                        <FaCoins className="text-yellow-500 text-xl"/>
-                                        <div className="badge badge-secondary">+0</div>
+                                        <FaCoins className="text-yellow-500 text-xl" />
+                                    <div className="badge badge-secondary">{users?.coin}</div>
                                     </button>
                                 </Link>
                             </li>
@@ -99,7 +116,7 @@ const Navbar = () => {
                             <Link to='/dashboard/userSubmissions'>
                                 <button className="btn">
                                     <FaCoins className="text-yellow-500 text-xl" />
-                                    <div className="badge badge-secondary">+0</div>
+                                <div className="badge badge-secondary">{users?.coin}</div>
                                 </button>
                             </Link>
                         </li>

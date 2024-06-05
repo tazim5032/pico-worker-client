@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
 } from "react-router-dom";
+import ErrorPage from "../Components/ErrorPage";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AddTask from "../Pages/Dashboard/Author/AddTask";
@@ -12,10 +13,12 @@ import Details from "../Pages/Home/Details";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
+import SubmitForm from "../Pages/SubmitForm";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -32,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: 'details/:id',
         element: <Details></Details>
+      },
+      {
+        path: 'submit-form/:id',
+        element: <SubmitForm></SubmitForm>
       }
     ]
   },

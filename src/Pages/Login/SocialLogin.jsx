@@ -18,11 +18,13 @@ const SocialLogIn = () => {
         socialProvider()
         .then(result =>{
            if(result.user){
-
+                let coin = 10;
                 const userInfo ={
                     email: result.user.email,
                     name: result.user.displayName,
                     accountType: 'worker',
+                    coin: coin,
+                    
                 }
 
                 axiosPublic.post('/users', userInfo)
