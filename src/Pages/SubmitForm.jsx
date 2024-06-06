@@ -105,25 +105,13 @@ const SubmitForm = () => {
                     <h1 className="mb-6">Task Title: {assignment.title}</h1>
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-gray-700">Task Solution Link(PDF/Doc)</span>
+                            <span className="text-gray-700">Submission Details</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="url" placeholder="Task Solution URL"
                                 className="input input-bordered w-full" required />
                         </label>
                     </div>
-
-
-                    <div className="form-control mb-4 ">
-                        <label className="label">
-                            <span className="text-gray-700">Note(submitted task info)</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name="description" placeholder="Note"
-                                className="input input-bordered w-full py-12" required />
-                        </label>
-                    </div>
-
 
                     <input className="btn btn-block bg-black text-white w-full"
                         type="submit" value="Submit" />

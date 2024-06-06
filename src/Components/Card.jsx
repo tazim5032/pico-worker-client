@@ -13,17 +13,19 @@ const Card = ({ item }) => {
                 <img className="w-full h-48 object-cover object-center" src={item.image} />
                 <div className="py-1 px-6">
                     <h2 className="text-xl font-semibold ">{item.title}</h2>
+                    <h2 className="">Author: {item.author_name}</h2>
+                    <span className="text-sm mr-1">
+                        Quantity: {item.quantity}
+                    </span>
                     <div className="flex justify-between items-center mt-2">
                         <div className="flex items-center justify-between">
-                            <span className="text-sm mr-1">
-                                Quantity: {item.quantity}
-                            </span>
+
                             <span className='text-sm mr-1'>
-                                Payment {item.price}<FaCoins></FaCoins>
+                                Payment: {item.price} Coins
                             </span>
 
                         </div>
-                        <span className="text-sm">
+                        <span className="text-sm bg-red-300 p-1 rounded-xl">
                             Deadline: {new Date(item.deadline).toLocaleDateString()}
                         </span>
                     </div>

@@ -23,7 +23,7 @@ const Navbar = () => {
         setUsers(data)
     }
 
-    console.log(users?.coin);
+   // console.log(users?.coin);
 
     const handleLogOut = () => {
         logOut()

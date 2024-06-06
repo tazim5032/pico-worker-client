@@ -9,11 +9,11 @@ import MyTaskList from "../Pages/Dashboard/Author/MyTaskList";
 import UpdateTask from "../Pages/Dashboard/Author/UpdateTask";
 import TaskList from "../Pages/Dashboard/Cart/Worker/TaskList";
 import UserSubmissions from "../Pages/Dashboard/Cart/Worker/UserSubmissions";
+import UserHome from "../Pages/Dashboard/User/UserHome";
 import Details from "../Pages/Home/Details";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
-import SubmitForm from "../Pages/SubmitForm";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -36,10 +36,7 @@ export const router = createBrowserRouter([
         path: 'details/:id',
         element: <Details></Details>
       },
-      {
-        path: 'submit-form/:id',
-        element: <SubmitForm></SubmitForm>
-      }
+      
     ]
   },
   {
@@ -51,6 +48,16 @@ export const router = createBrowserRouter([
       {
         path: 'userSubmissions',
         element: <UserSubmissions></UserSubmissions>
+
+      },
+      {
+        path: 'userHome',
+        element: <UserHome></UserHome>
+
+      },
+      {
+        path: 'userHome',
+        element: <UserHome></UserHome>
 
       },
       {
