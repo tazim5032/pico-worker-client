@@ -13,7 +13,7 @@ const Navbar = () => {
     const axiosSecure = useAxiosSecure();
     const [users, setUsers] = useState([]);
 
-    useEffect(  () => {
+    useEffect(() => {
         getData()
     }, [user])
 
@@ -23,7 +23,7 @@ const Navbar = () => {
         setUsers(data)
     }
 
-   // console.log(users?.coin);
+    // console.log(users?.coin);
 
     const handleLogOut = () => {
         logOut()
@@ -65,7 +65,7 @@ const Navbar = () => {
                                 <Link to='/dashboard/userSubmissions'>
                                     <button className="btn">
                                         <FaCoins className="text-yellow-500 text-xl" />
-                                    <div className="badge badge-secondary">{users?.coin}</div>
+                                        <div className="badge badge-secondary">{users?.coin}</div>
                                     </button>
                                 </Link>
                             </li>
@@ -83,7 +83,11 @@ const Navbar = () => {
 
 
                                 </> : <>
-                                    <li><Link to='/signup'>Watch Demo</Link></li>
+                                    <li>
+                                        <a href="https://www.youtube.com/watch?v=CgkZ7MvWUAA" target="_blank" rel="noopener noreferrer">
+                                            Watch Demo
+                                        </a>
+                                    </li>
                                     <li><Link to='/login'>Login</Link></li>
                                     <li><Link to='/signup'>Register</Link></li>
                                 </>
@@ -116,7 +120,7 @@ const Navbar = () => {
                             <Link to='/dashboard/userSubmissions'>
                                 <button className="btn">
                                     <FaCoins className="text-yellow-500 text-xl" />
-                                <div className="badge badge-secondary">{users?.coin}</div>
+                                    <div className="badge badge-secondary">{users?.coin}</div>
                                 </button>
                             </Link>
                         </li>
@@ -133,7 +137,11 @@ const Navbar = () => {
 
 
                             </> : <>
-                                <li><Link to='/signup'>Watch Demo</Link></li>
+                                <li>
+                                    <a href="https://www.youtube.com/watch?v=CgkZ7MvWUAA" target="_blank" rel="noopener noreferrer">
+                                        Watch Demo
+                                    </a>
+                                </li>
                                 <li><Link to='/login'>Login</Link></li>
                                 <li><Link to='/signup'>Register</Link></li>
 
