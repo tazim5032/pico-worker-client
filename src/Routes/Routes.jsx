@@ -4,8 +4,12 @@ import {
 import ErrorPage from "../Components/ErrorPage";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
+import ManageTask from "../Pages/Dashboard/Admin/ManageTask";
+import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
 import AddTask from "../Pages/Dashboard/Author/AddTask";
 import MyTaskList from "../Pages/Dashboard/Author/MyTaskList";
+import PendingTask from "../Pages/Dashboard/Author/PendingTask";
 import UpdateTask from "../Pages/Dashboard/Author/UpdateTask";
 import TaskList from "../Pages/Dashboard/Cart/Worker/TaskList";
 import UserSubmissions from "../Pages/Dashboard/Cart/Worker/UserSubmissions";
@@ -76,6 +80,10 @@ export const router = createBrowserRouter([
         element: <MyTaskList></MyTaskList>
       },
       {
+        path: 'pending',
+        element: <PendingTask></PendingTask>
+      },
+      {
         path: 'updateTask/:id',
         element: <UpdateTask></UpdateTask>,
         loader: ({ params }) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
@@ -83,6 +91,19 @@ export const router = createBrowserRouter([
 
 
       //admin
+
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'manage-user',
+        element: <ManageUser></ManageUser>
+      },
+      {
+        path: 'manage-task',
+        element: <ManageTask></ManageTask>
+      },
     ]
   }
 ]);

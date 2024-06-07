@@ -62,7 +62,7 @@ const Navbar = () => {
                                 user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
                             }
                             <li>
-                                <Link to='/dashboard/userSubmissions'>
+                                <Link to='/dashboard'>
                                     <button className="btn">
                                         <FaCoins className="text-yellow-500 text-xl" />
                                         <div className="badge badge-secondary">{users?.coin}</div>
@@ -117,7 +117,7 @@ const Navbar = () => {
                             user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
                         }
                         <li>
-                            <Link to='/dashboard/userSubmissions'>
+                            <Link to='/dashboard'>
                                 <button className="btn">
                                     <FaCoins className="text-yellow-500 text-xl" />
                                     <div className="badge badge-secondary">{users?.coin}</div>

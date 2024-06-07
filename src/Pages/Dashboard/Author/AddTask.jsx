@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -16,66 +16,88 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddTask = () => {
 
-    const [startDate, setStartDate] = useState(new Date())
-    const { register, handleSubmit, reset } = useForm()
-    const {user} = useAuth();
+    const [startDate, setStartDate] = useState(new Date());
+    const [userCoin, setUserCoin] = useState(0);
+    const { register, handleSubmit, reset } = useForm();
+    const { user } = useAuth();
     const navigate = useNavigate();
-
-   // console.log(user.displayName,user.email);
 
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
+   
+    
+
+    useEffect(() => {
+        // Fetch user's coin balance when the component mounts
+        const fetchUserCoin = async () => {
+            try {
+                const res = await axiosSecure.get(`/user/${user.email}`);
+                setUserCoin(res.data.coin || 0); // Set user's coin balance or default to 0
+            } catch (error) {
+                console.error('Failed to fetch user coin balance', error);
+            }
+        };
+        fetchUserCoin();
+    }, [axiosSecure, user.email]);
+
     const onSubmit = async (data) => {
-        //  console.log(data)
-
-        // image upload to imgbb and then get an url
-        const imageFile = { image: data.image[0] }
-
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
-
-        if (res.data.success) {
-            // now send the menu item data to the server with the image url
-            const taskinfo = {
-                title: data.title,
-                description: data.description,
-                author_name: user.displayName,
-                author_email: user.email,
-                quantity: data.quantity,
-                price: parseFloat(data.price),
-                total:parseFloat(data.price) * parseFloat(data.quantity),
-                info: data.info,
-                deadline : startDate,
-                image: res.data.data.display_url
-                
-            }
-
-            const taskRes = await axiosSecure.post('/task', taskinfo);
-
-            console.log(taskRes.data)
-
-            if (taskRes.data.insertedId) {
-
-                reset();
-                Swal.fire({
-
-                    icon: "success",
-                    title: `${data.title} is added to the menu.`,
-
-
-                });
-
-                navigate('/dashboard/my-task-list')
-
-
-            }
+        const total = parseFloat(data.price) * parseFloat(data.quantity);
+        const newCoinBalance = userCoin - total;
+    
+        if (newCoinBalance < 0) {
+            // Display SweetAlert if user doesn't have enough coins
+            Swal.fire({
+                icon: "error",
+                title: "Insufficient Coins",
+                text: `You need ${-newCoinBalance} more coins to add this task.`,
+            });
+            return;
         }
-       // console.log('with image url', res.data);
-    }
+    
+        const imageFile = { image: data.image[0] };
+    
+        try {
+            const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            });
+    
+            if (res.data.success) {
+                const taskinfo = {
+                    title: data.title,
+                    description: data.description,
+                    author_name: user.displayName,
+                    author_email: user.email,
+                    quantity: data.quantity,
+                    price: parseFloat(data.price),
+                    total: total,
+                    info: data.info,
+                    deadline: startDate,
+                    image: res.data.data.display_url
+                }
+    
+                const taskRes = await axiosSecure.post('/task', taskinfo);
+    
+                if (taskRes.data.insertedId) {
+                    // Update user's coin balance
+                    await axiosSecure.patch(`/user/${user.email}`, { coin: newCoinBalance });
+                    setUserCoin(newCoinBalance); // Update local state
+                    reset();
+                    Swal.fire({
+                        icon: "success",
+                        title: `${data.title} is added to the menu.`,
+                    });
+
+                    navigate('/dashboard/my-task-list');
+                }
+            }
+        } catch (error) {
+            console.error('Failed to add task', error);
+        }
+    };
+    
     return (
         <div>
             <SectionTitle heading="Add a Task" subHeading="What's new?" ></SectionTitle>
