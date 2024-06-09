@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { IoMdAdd } from "react-icons/io";
+import { IoIosNotifications, IoMdAdd } from "react-icons/io";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../Components/SectionTitle";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { FaCoins } from "react-icons/fa";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -25,8 +26,19 @@ const AddTask = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-   
-    
+    const [currentUser, setCurrentUser] = useState([]);
+    // console.log(isTaskCreator);
+
+    useEffect(() => {
+        getDataa()
+    }, [user])
+
+    const getDataa = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setCurrentUser(data)
+    }
+
 
     useEffect(() => {
         // Fetch user's coin balance when the component mounts
@@ -44,7 +56,7 @@ const AddTask = () => {
     const onSubmit = async (data) => {
         const total = parseFloat(data.price) * parseFloat(data.quantity);
         const newCoinBalance = userCoin - total;
-    
+
         if (newCoinBalance < 0) {
             // Display SweetAlert if user doesn't have enough coins
             Swal.fire({
@@ -54,16 +66,16 @@ const AddTask = () => {
             });
             return;
         }
-    
+
         const imageFile = { image: data.image[0] };
-    
+
         try {
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
                 headers: {
                     'content-type': 'multipart/form-data'
                 }
             });
-    
+
             if (res.data.success) {
                 const taskinfo = {
                     title: data.title,
@@ -77,9 +89,9 @@ const AddTask = () => {
                     deadline: startDate,
                     image: res.data.data.display_url
                 }
-    
+
                 const taskRes = await axiosSecure.post('/task', taskinfo);
-    
+
                 if (taskRes.data.insertedId) {
                     // Update user's coin balance
                     await axiosSecure.patch(`/user/${user.email}`, { coin: newCoinBalance });
@@ -87,7 +99,7 @@ const AddTask = () => {
                     reset();
                     Swal.fire({
                         icon: "success",
-                        title: `${data.title} is added to the menu.`,
+                        title: `${data.title} is added to the TaskList.`,
                     });
 
                     navigate('/dashboard/my-task-list');
@@ -97,9 +109,47 @@ const AddTask = () => {
             console.error('Failed to add task', error);
         }
     };
-    
+
     return (
         <div>
+            <div className="flex gap-8 justify-end mr-8">
+
+                <div>
+                    <div className="flex pt-4">
+                        <FaCoins className="text-yellow-500 text-xl" />
+                        <div className="badge badge-primary font-bold ml-1">{currentUser?.coin}</div>
+                    </div>
+                    <div className="mt-4 font-bold">
+                        Name: {user?.displayName}</div>
+
+                </div>
+
+                <div>
+                    <label tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                        title={user?.displayName}
+                    >
+
+                        <div className="tool w-10 rounded-full" >
+                            <img className="idd"
+                                src={user?.photoURL ||
+                                    "https://i.ibb.co/sjymvr8/Capture4.png"} />
+                        </div>
+
+
+                    </label>
+
+
+
+                    <div className="font-bold">
+                        Role: {currentUser?.accountType}</div>
+                </div>
+                <div>
+                    <IoIosNotifications className="text-4xl mt-4" />
+                </div>
+
+
+            </div>
             <SectionTitle heading="Add a Task" subHeading="What's new?" ></SectionTitle>
             <div className="sm:px-12">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -151,14 +201,14 @@ const AddTask = () => {
                             className="input input-bordered w-full" />
                     </div>
 
-                   
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Submission Info</span>
                         </label>
-                        <textarea {...register('info')} 
-                        className="textarea textarea-bordered h-24"
-                         placeholder="Submission Info"></textarea>
+                        <textarea {...register('info')}
+                            className="textarea textarea-bordered h-24"
+                            placeholder="Submission Info"></textarea>
                     </div>
 
 
@@ -182,7 +232,7 @@ const AddTask = () => {
                     <div className="form-control w-full my-6">
                         <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
                     </div>
-                    
+
 
                     <button className="btn">
                         Add Task <IoMdAdd className="ml-2" />

@@ -8,12 +8,17 @@ import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import ManageTask from "../Pages/Dashboard/Admin/ManageTask";
 import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
 import AddTask from "../Pages/Dashboard/Author/AddTask";
+import AuthorHome from "../Pages/Dashboard/Author/AuthorHome";
+import MakePayment from "../Pages/Dashboard/Author/MakePayment";
 import MyTaskList from "../Pages/Dashboard/Author/MyTaskList";
+import PaymentHistory from "../Pages/Dashboard/Author/PaymentHistory";
+import PaymentOptions from "../Pages/Dashboard/Author/PaymentOptions";
 import PendingTask from "../Pages/Dashboard/Author/PendingTask";
 import UpdateTask from "../Pages/Dashboard/Author/UpdateTask";
 import TaskList from "../Pages/Dashboard/Cart/Worker/TaskList";
 import UserSubmissions from "../Pages/Dashboard/Cart/Worker/UserSubmissions";
 import UserHome from "../Pages/Dashboard/User/UserHome";
+import Withdraw from "../Pages/Dashboard/User/Withdraw";
 import Details from "../Pages/Home/Details";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -69,8 +74,16 @@ export const router = createBrowserRouter([
         path: 'taskList',
         element: <TaskList></TaskList>
       },
+      {
+        path: 'withdraw',
+        element: <Withdraw></Withdraw>
+      },
 
       //author
+      {
+        path: 'authorHome',
+        element: <AuthorHome></AuthorHome>
+      },
       {
         path: 'add-new-task',
         element: <AddTask></AddTask>
@@ -78,6 +91,18 @@ export const router = createBrowserRouter([
       {
         path: 'my-task-list',
         element: <MyTaskList></MyTaskList>
+      },
+      {
+        path: 'payment',
+        element: <PaymentOptions></PaymentOptions>
+      },
+      {
+        path: 'make-payment',
+        element: <MakePayment></MakePayment>
+      },
+      {
+        path: 'history',
+        element: <PaymentHistory></PaymentHistory>
       },
       {
         path: 'pending',

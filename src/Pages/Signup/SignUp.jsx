@@ -45,6 +45,7 @@ const SignUp = () => {
                 updateUserProfile(data.fullName, data.photo)
                     .then(() => {
                         let coin = 50;
+                        let total_income=0;
                         if(accountType === 'worker'){
                             coin = 10;
                         }
@@ -54,6 +55,7 @@ const SignUp = () => {
                             email: data.email,
                             accountType: accountType,
                             coin: coin,
+                            total_income: total_income,
                         }
 
                         axiosPublic.post('/users', userInfo)

@@ -19,11 +19,13 @@ const SocialLogIn = () => {
         .then(result =>{
            if(result.user){
                 let coin = 10;
+                let total_income = 0;
                 const userInfo ={
                     email: result.user.email,
                     name: result.user.displayName,
                     accountType: 'worker',
                     coin: coin,
+                    total_income,
                     
                 }
 

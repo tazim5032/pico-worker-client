@@ -28,12 +28,12 @@ const UserHome = () => {
 
     const getDataa = async () => {
         const { data } = await axiosSecure(
-            `/submission/${user?.email}`)
+            `/user-submission/${user?.email}`)
         setTasks(data)
     }
 
     return (
-        <div className="mt-12 sm:ml-4">
+        <div className="mt-12 sm:ml-4 mb-96">
             <h2 className="text-3xl">
                 <span>Hi, Welcome </span>
                 {
@@ -57,7 +57,7 @@ const UserHome = () => {
                         <FaBook className="text-3xl"></FaBook>
                     </div>
                     <div className="stat-title">Total Submissions</div>
-                    <div className="stat-value">{tasks?.length}</div>
+                    <div className="stat-value">{tasks.length}</div>
                    
                 </div>
 
