@@ -104,7 +104,7 @@ const WithdrawForm = () => {
     };
 
     return (
-        <div className="container mx-auto py-8">
+        <div className="container mx-auto">
             <div className="flex gap-8 justify-end mr-8">
 
                 <div>

@@ -1,11 +1,29 @@
 import { useEffect, useState } from "react";
+import { FaCoins } from "react-icons/fa";
+import { IoIosNotifications } from "react-icons/io";
 import Card from "../../../../Components/Card";
+import useAuth from "../../../../Hooks/useAuth";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const TaskList = () => {
     const [items, setItems] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const itemsPerPage = 6;
+
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const [currentUser, setCurrentUser] = useState([]);
+    // const navigate = useNavigate();
+    useEffect(() => {
+        getDataa()
+    }, [user])
+
+    const getDataa = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setCurrentUser(data)
+    }
 
     useEffect(() => {
         fetchTasks(currentPage);
@@ -27,7 +45,48 @@ const TaskList = () => {
     };
 
     return (
-        <div>
+        <div className="mb-48">
+            <div className="flex gap-8 justify-end mr-8">
+
+                <div>
+                    <div className="flex pt-4">
+                        <FaCoins className="text-yellow-500 text-xl" />
+                        <div className="badge badge-primary font-bold ml-1">
+                                {currentUser?.coin}</div>
+                    </div>
+                    <div className="mt-4 font-bold">
+                        Name: {user?.displayName}</div>
+
+                </div>
+
+                <div>
+                    <label tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                        title={user?.displayName}
+                    >
+
+                        <div className="tool w-10 rounded-full" >
+                            <img className="idd"
+                                src={user?.photoURL ||
+                                    "https://i.ibb.co/sjymvr8/Capture4.png"} />
+                        </div>
+
+
+                    </label>
+
+
+
+                    <div className="font-bold">
+                        Role: {currentUser?.accountType}</div>
+                </div>
+                <div>
+                    <IoIosNotifications className="text-4xl mt-4" />
+                </div>
+
+
+            </div>
+
+            
             <h1 className='text-center mt-12 text-4xl font-semibold'>
                 Featured Task
             </h1>
@@ -42,8 +101,8 @@ const TaskList = () => {
             </div>
 
             <div className="flex justify-center mt-8">
-                <button 
-                    onClick={() => handlePageChange(currentPage - 1)} 
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
                     className="btn"
                 >
@@ -52,8 +111,8 @@ const TaskList = () => {
                 <span className="mx-4">
                     Page {currentPage} of {totalPages}
                 </span>
-                <button 
-                    onClick={() => handlePageChange(currentPage + 1)} 
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
                     className="btn"
                 >

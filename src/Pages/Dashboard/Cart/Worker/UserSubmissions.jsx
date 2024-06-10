@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Helmet from "react-helmet";
+import { FaCoins } from "react-icons/fa";
+import { IoIosNotifications } from "react-icons/io";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
@@ -10,6 +12,19 @@ const UserSubmissions = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const itemsPerPage = 4;
+
+
+    const [currentUser, setCurrentUser] = useState([]);
+    // const navigate = useNavigate();
+    useEffect(() => {
+        getDataa()
+    }, [user])
+
+    const getDataa = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setCurrentUser(data)
+    }
 
     useEffect(() => {
         getData(currentPage);
@@ -28,10 +43,49 @@ const UserSubmissions = () => {
     };
 
     return (
-        <section className='container px-4 mx-auto pt-24'>
+        <section className='container px-4 mx-auto mb-96'>
             <Helmet>
                 <title>My Submissions</title>
             </Helmet>
+            <div className="flex gap-8 justify-end mr-8">
+
+                <div>
+                    <div className="flex pt-4">
+                        <FaCoins className="text-yellow-500 text-xl" />
+                        <div className="badge badge-primary font-bold ml-1">
+                                {currentUser?.coin}</div>
+                    </div>
+                    <div className="mt-4 font-bold">
+                        Name: {user?.displayName}</div>
+
+                </div>
+
+                <div>
+                    <label tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                        title={user?.displayName}
+                    >
+
+                        <div className="tool w-10 rounded-full" >
+                            <img className="idd"
+                                src={user?.photoURL ||
+                                    "https://i.ibb.co/sjymvr8/Capture4.png"} />
+                        </div>
+
+
+                    </label>
+
+
+
+                    <div className="font-bold">
+                        Role: {currentUser?.accountType}</div>
+                </div>
+                <div>
+                    <IoIosNotifications className="text-4xl mt-4" />
+                </div>
+
+
+            </div>
             <div className='flex items-center gap-x-3'>
                 <h2 className='text-lg font-medium'>My Submissions</h2>
                 <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full'>

@@ -3,6 +3,7 @@ import { FaBook, FaCoins, FaDollarSign } from 'react-icons/fa';
 import { IoIosNotifications } from 'react-icons/io';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import PendingTask from './PendingTask';
 
 const AuthorHome = () => {
     const { user } = useAuth();
@@ -114,6 +115,8 @@ const AuthorHome = () => {
                     <p className="text-xl">Total Payment Paid: ${totalSum}</p>
                 </div>
             </div>
+
+            <PendingTask></PendingTask>
         </div>
     );
 };

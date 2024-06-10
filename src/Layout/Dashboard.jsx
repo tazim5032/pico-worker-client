@@ -1,15 +1,18 @@
-import { FaAddressBook, FaBook, FaCoins, FaEnvelope, FaHistory, FaHome, FaList, FaSearch, FaUsers }
+import { FaAddressBook, FaBook, FaCoins, FaEnvelope, FaHistory, FaHome, FaList, FaUsers }
     from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { IoMdAdd } from "react-icons/io";
+import {  IoMdAdd } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
 //import useAxiosSecure from "../Hooks/useAxiosSecure";
 //import { useEffect, useState } from "react";
 //import useAuth from "../Hooks/useAuth";
 import Footer from "../Pages/Shared/Footer";
 import useAdmin from "../Hooks/useAdmin";
 import useTaskCreator from "../Hooks/useTaskCreator";
+//import Notifications from "../Components/Notifications";
+//import useAuth from "../Hooks/useAuth";
 const Dashboard = () => {
-   // const { user } = useAuth();
+    //const { user } = useAuth();
     const [isAdmin] = useAdmin();
     const [isTaskCreator] = useTaskCreator();
     //const axiosSecure = useAxiosSecure();
@@ -63,8 +66,9 @@ const Dashboard = () => {
                                         <li>
                                             <NavLink to='/dashboard/authorHome'>
                                                 <FaHome />
-                                                 Home</NavLink>
+                                                Home</NavLink>
                                         </li>
+
                                         <li>
                                             <NavLink to='/dashboard/add-new-task'>
                                                 <IoMdAdd />
@@ -113,20 +117,8 @@ const Dashboard = () => {
 
                                 }
 
-
-
-
-
-
-
-
-
                             </>
                     }
-
-
-
-
 
                     <div className="divider"></div>
 
@@ -141,14 +133,15 @@ const Dashboard = () => {
 
 
                     <li>
-                        <NavLink to='/order/salad'>
-                            <FaSearch />
-                            Menu</NavLink>
+                        <NavLink to='/profile'>
+                            <CgProfile />
+
+                            Profile</NavLink>
                     </li>
 
 
                     <li>
-                        <NavLink to='/order/contact'>
+                        <NavLink to='/contact'>
                             <FaEnvelope />
                             Contact</NavLink>
                     </li>
@@ -160,6 +153,7 @@ const Dashboard = () => {
             {/* dashboard content */}
             <div className="flex-1 mt-12">
                 
+                {/* <Notifications userEmail={user.email} /> */}
                 <Outlet></Outlet>
                 <Footer></Footer>
             </div>

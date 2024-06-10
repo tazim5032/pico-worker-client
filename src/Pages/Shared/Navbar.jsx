@@ -3,12 +3,13 @@ import { FaCoins } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAdmin from "../../Hooks/useAdmin";
 //import useCoin from "../../Hooks/useCoin";
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
-    //const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin();
     // const [cart] = useCoin(); 
     const axiosSecure = useAxiosSecure();
     const [users, setUsers] = useState([]);
@@ -49,14 +50,10 @@ const Navbar = () => {
                             <li>
                                 <Link to='/'>Home</Link>
                             </li>
-                            <li>
-                                <Link to='/menu'>Our Menu</Link>
-                            </li>
-                            <li>
-                                <Link to='/order/salad'>Order Food</Link>
-                            </li>
+                            
+                            
                             {
-                                user && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                                isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
                             }
                             {
                                 user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
@@ -97,21 +94,19 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <Link className="btn btn-ghost text-xl" to='/'>MicroTask</Link>
+                    <Link className="btn btn-ghost text-xl" to='/'>
+                        <img src="https://i.ibb.co/t4yQbSp/logo.png" className="h-12 w-12 rounded-xl" alt="" />
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li>
                             <Link to='/'>Home</Link>
                         </li>
-                        <li>
-                            <Link to='/menu'>Our Menu</Link>
-                        </li>
-                        <li>
-                            <Link to='/order/salad'>Order Food</Link>
-                        </li>
+                        
+                        
                         {
-                            user && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                            isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
                         }
                         {
                             user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
