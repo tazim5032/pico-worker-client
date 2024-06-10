@@ -53,7 +53,7 @@ const SignUp = () => {
             if (res.data.success) {
                 const imageUrl = res.data.data.url;
                 // Password meets requirements, proceed with user creation and profile update
-                const user = await createUser(data.email, data.password);
+                 await createUser(data.email, data.password);
                 await updateUserProfile(data.fullName, imageUrl);
 
                 let coin = 50;

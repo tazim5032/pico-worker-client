@@ -4,13 +4,14 @@ import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAdmin from "../../Hooks/useAdmin";
+import useTaskCreator from "../../Hooks/useTaskCreator";
 //import useCoin from "../../Hooks/useCoin";
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
     const [isAdmin] = useAdmin();
-    // const [cart] = useCoin(); 
+    const [isTaskCreator] = useTaskCreator();
     const axiosSecure = useAxiosSecure();
     const [users, setUsers] = useState([]);
 
@@ -42,30 +43,36 @@ const Navbar = () => {
             <div className="navbar fixed z-10 bg-opacity-70 bg-black text-white
             mx-auto">
                 <div className="navbar-start">
-                    <div className="dropdown">
+                    <div className="dropdown ">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className=" bg-cyan-500 menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
                                 <Link to='/'>Home</Link>
                             </li>
-                            
-                            
+
+
                             {
-                                isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                                isAdmin && <li><Link to="/dashboard/adminHome">
+                                    Dashboard</Link></li>
                             }
                             {
-                                user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+                                isTaskCreator && <li><Link to="/dashboard/authorHome">
+                                    Dashboard</Link></li>
                             }
-                            <li>
-                                <Link to='/dashboard'>
-                                    <button className="btn">
-                                        <FaCoins className="text-yellow-500 text-xl" />
-                                        <div className="badge badge-secondary">{users?.coin}</div>
-                                    </button>
-                                </Link>
-                            </li>
+                            {
+                                !isAdmin && user &&
+
+                                <li>
+                                    <Link to='/dashboard'>
+                                        <button className="btn">
+                                            <FaCoins className="text-yellow-500 text-xl" />
+                                            <div className="badge badge-secondary">{users?.coin}</div>
+                                        </button>
+                                    </Link>
+                                </li>
+                            }
 
 
                             {
@@ -74,7 +81,7 @@ const Navbar = () => {
 
                                     <li><Link to='/signup'>Profile</Link></li>
                                     <button onClick={handleLogOut}
-                                        className="btn btn-ghost">Logout</button>
+                                        className="btn btn-ghost bg-red-700">Logout</button>
 
 
 
@@ -103,22 +110,26 @@ const Navbar = () => {
                         <li>
                             <Link to='/'>Home</Link>
                         </li>
-                        
-                        
+
+
                         {
-                            isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                            isAdmin && <li><Link to="/dashboard/adminHome">
+                                Dashboard</Link></li>
                         }
                         {
-                            user && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+                            isTaskCreator && <li><Link to="/dashboard/authorHome">
+                                Dashboard</Link></li>
                         }
-                        <li>
-                            <Link to='/dashboard'>
-                                <button className="btn">
+                        {
+                            !isAdmin && user &&
+
+                            <li>
+                                <div className="btn pb-2">
                                     <FaCoins className="text-yellow-500 text-xl" />
-                                    <div className="badge badge-secondary">{users?.coin}</div>
-                                </button>
-                            </Link>
-                        </li>
+                                    <div className="">{users?.coin}</div>
+                                </div>
+                            </li>
+                        }
                         {
                             user ? <>
                                 {/* <span>{user.displayName}</span> */}
@@ -126,7 +137,7 @@ const Navbar = () => {
                                 <li><Link to='/signup'>Profile</Link></li>
 
                                 <button onClick={handleLogOut}
-                                    className="btn btn-ghost">Logout</button>
+                                    className="btn btn-ghost bg-red-700 pb-2">Logout</button>
 
 
 
