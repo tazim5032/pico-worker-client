@@ -68,6 +68,7 @@ const AddTask = () => {
         }
 
         const imageFile = { image: data.image[0] };
+       
 
         try {
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -150,6 +151,7 @@ const AddTask = () => {
 
 
             </div>
+
             <SectionTitle heading="Add a Task" subHeading="What's new?" ></SectionTitle>
             <div className="sm:px-12">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -164,7 +166,6 @@ const AddTask = () => {
                             required
                             className="input input-bordered w-full" />
                     </div>
-
 
                     <div className="form-control w-full my-6">
                         <label className="label">
@@ -230,7 +231,8 @@ const AddTask = () => {
 
 
                     <div className="form-control w-full my-6">
-                        <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
+                        <input {...register('image', { required: true })} 
+                        type="file" className="file-input w-full max-w-xs" />
                     </div>
 
 

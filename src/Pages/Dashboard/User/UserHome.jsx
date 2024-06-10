@@ -53,7 +53,7 @@ const UserHome = () => {
     let total = parseFloat(users.coin) - 10.0;
     total = total / 20 + parseFloat(users.total_income);
 
-  console.log(submissions);
+// console.log(submissions);
 
     return (
         <div className="sm:ml-4 mb-96">
