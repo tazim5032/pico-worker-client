@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Helmet from "react-helmet";
 import { FaCoins } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import Card from "../../../../Components/Card";
@@ -46,6 +47,9 @@ const TaskList = () => {
 
     return (
         <div className="mb-48">
+            <Helmet>
+                <title>TaskList</title>
+            </Helmet>
             <div className="flex flex-col sm:flex-row gap-8 justify-end mr-8">
 
                 <div>

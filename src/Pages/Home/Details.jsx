@@ -6,6 +6,7 @@ import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Helmet from 'react-helmet';
 
 const Details = () => {
     const { id } = useParams();
@@ -97,6 +98,9 @@ const Details = () => {
     }
     return (
         <div className=''>
+            <Helmet>
+                <title>Details</title>
+            </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-36">
                 {/* Left Column: Image */}
                 <div>

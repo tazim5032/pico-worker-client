@@ -46,7 +46,8 @@ const Login = () => {
                         text: 'Login Successful!',
                     });
 
-                    navigate(from, {replace: true})
+                   // navigate(from, {replace: true})
+                   navigate('/dashboard')
 
 
                 }

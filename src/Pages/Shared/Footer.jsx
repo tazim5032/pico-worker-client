@@ -1,10 +1,9 @@
-import React from 'react';
 import { FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
     return (
         <footer className="bg-gray-800 text-white py-12">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Logo */}
                 <div className="flex items-center justify-center">
                     <img src='https://i.ibb.co/t4yQbSp/logo.png' alt="Logo" className="h-12 w-16 rounded-xl" />
@@ -27,8 +26,8 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-semibold mb-4">Newsletter</h3>
                     <p>Subscribe to our newsletter to get the latest updates.</p>
-                    <form className="mt-4">
-                        <input type="email" placeholder="Enter your email" className="w-full p-2 mb-2 rounded-md" />
+                    <form className="mt-4 flex flex-col sm:flex-row">
+                        <input type="email" placeholder="Enter your email" className="p-2 mb-2 rounded-md" />
                         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Subscribe</button>
                     </form>
                 </div>

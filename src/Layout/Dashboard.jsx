@@ -1,7 +1,7 @@
 import { FaAddressBook, FaBook, FaCoins, FaEnvelope, FaHistory, FaHome, FaList, FaUsers }
     from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import {  IoMdAdd } from "react-icons/io";
+import { IoIosNotifications, IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 //import useAxiosSecure from "../Hooks/useAxiosSecure";
 //import { useEffect, useState } from "react";
@@ -9,28 +9,36 @@ import { CgProfile } from "react-icons/cg";
 import Footer from "../Pages/Shared/Footer";
 import useAdmin from "../Hooks/useAdmin";
 import useTaskCreator from "../Hooks/useTaskCreator";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
+import useAuth from "../Hooks/useAuth";
+import Helmet from "react-helmet";
 //import Notifications from "../Components/Notifications";
 //import useAuth from "../Hooks/useAuth";
 const Dashboard = () => {
-    //const { user } = useAuth();
+    const { user } = useAuth();
     const [isAdmin] = useAdmin();
     const [isTaskCreator] = useTaskCreator();
-    //const axiosSecure = useAxiosSecure();
-    // const [users, setUsers] = useState([]);
+    const axiosSecure = useAxiosSecure();
+    const [currentUser, setCurrentUser] = useState([]);
     // console.log(users);
 
-    // useEffect(() => {
-    //     getData()
-    // }, [user])
+    useEffect(() => {
+        getData()
+    }, [user])
 
-    // const getData = async () => {
-    //     const { data } = await axiosSecure(
-    //         `/user/${user?.email}`)
-    //     setUsers(data)
-    // }
+    const getData = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setCurrentUser(data)
+    }
 
     return (
         <div className="flex">
+            <Helmet>
+                <title>Dashboard</title>
+            </Helmet>
+
 
             {/* sidebar */}
             <div className="w-48 sm:w-64 min-h-screen bg-cyan-400">
@@ -151,8 +159,8 @@ const Dashboard = () => {
             </div>
 
             {/* dashboard content */}
-            <div className="flex-1 mt-12">
-                
+            <div className="flex-1 mt-12 ">
+               
                 {/* <Notifications userEmail={user.email} /> */}
                 <Outlet></Outlet>
                 <Footer></Footer>

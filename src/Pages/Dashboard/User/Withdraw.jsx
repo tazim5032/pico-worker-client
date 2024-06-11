@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Helmet from 'react-helmet';
 import { FaCoins } from 'react-icons/fa';
 import { IoIosNotifications } from 'react-icons/io';
 import Swal from 'sweetalert2';
@@ -105,7 +106,10 @@ const WithdrawForm = () => {
 
     return (
         <div className="container mx-auto">
-            <div className="flex gap-8 justify-end mr-8">
+            <Helmet>
+                <title>Withdraw</title>
+            </Helmet>
+            <div className="flex flex-col sm:flex-row gap-8 justify-end mr-8">
 
                 <div>
                     <div className="flex pt-4">
@@ -144,8 +148,8 @@ const WithdrawForm = () => {
 
 
             </div>
-            <h1 className="text-3xl font-semibold text-center mb-8">Withdraw Coins</h1>
-            <div className="max-w-lg mx-auto bg-white p-8 border border-gray-200 rounded">
+            <h1 className="text-2xl sm:text-xl font-semibold text-center mb-8">Withdraw Coins</h1>
+            <div className="w-32 sm:w-64 mx-auto bg-white p-8 border border-gray-200 rounded">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="maxWithdraw">
                         Maximum Withdrawal Amount (USD)
