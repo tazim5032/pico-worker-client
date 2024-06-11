@@ -81,8 +81,8 @@ const SubmitForm = () => {
                         confirmButtonText: 'Ok'
                     })
 
-                    //navigate('/my-submission')
-                    navigate('/')
+                    navigate('/userSubmissions')
+                    //navigate('/')
                 }
             })
 

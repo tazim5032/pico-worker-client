@@ -33,7 +33,7 @@ const Dashboard = () => {
         <div className="flex">
 
             {/* sidebar */}
-            <div className="w-64 min-h-screen bg-cyan-400">
+            <div className="w-48 sm:w-64 min-h-screen bg-cyan-400">
                 <Link className="btn btn-ghost text-xl text-black font-bold" to='/'>
                     Micro<span className="text-white">Task</span></Link>
                 <ul className="menu p-4">
@@ -96,7 +96,7 @@ const Dashboard = () => {
                                             <li>
                                                 <NavLink to='/dashboard/userHome'>
                                                     <FaHome />
-                                                    Worker Home</NavLink>
+                                                    Home</NavLink>
                                             </li>
                                             <li>
                                                 <NavLink to='/dashboard/taskList'>

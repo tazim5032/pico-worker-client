@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Helmet from "react-helmet";
 import { FaBook, FaCoins } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import useAuth from "../../../Hooks/useAuth";
@@ -57,9 +58,12 @@ const UserHome = () => {
 
     return (
         <div className="sm:ml-4 mb-96">
-            <div className="flex gap-8 justify-end mr-8">
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
+            <div className="flex flex-col sm:flex-row gap-8 justify-end mr-8">
 
-                <div>
+                <div className="">
                     <div className="flex pt-4">
                         <FaCoins className="text-yellow-500 text-xl" />
                         <div className="badge badge-primary font-bold ml-1">{users?.coin}</div>
@@ -95,6 +99,8 @@ const UserHome = () => {
 
 
             </div>
+
+
             <h2 className="text-3xl">
                 <span>Hi, Welcome </span>
                 {
@@ -102,9 +108,9 @@ const UserHome = () => {
                 }
             </h2>
 
-            <div className="stats shadow">
+            <div className="stats shadow flex flex-col sm:flex-row">
 
-                <div className="stat">
+                <div className="stat flex flex-col sm:flex-row">
                     <div className="stat-figure text-secondary">
                         <FaCoins className="text-3xl text-yellow-500"></FaCoins>
                     </div>
@@ -113,7 +119,7 @@ const UserHome = () => {
 
                 </div>
 
-                <div className="stat">
+                <div className="stat flex flex-col sm:flex-row">
                     <div className="stat-figure text-secondary">
                         <FaBook className="text-3xl"></FaBook>
                     </div>
@@ -124,7 +130,7 @@ const UserHome = () => {
 
 
 
-                <div className="stat">
+                <div className="stat flex flex-col sm:flex-row">
                     <div className="stat-figure text-secondary">
                         <FaBook className="text-3xl"></FaBook>
                     </div>
@@ -133,7 +139,7 @@ const UserHome = () => {
 
                 </div>
 
-                <div className="stat">
+                <div className="stat flex flex-col sm:flex-row">
                     <div className="stat-figure text-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
                     </div>

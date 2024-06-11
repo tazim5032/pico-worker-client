@@ -14,7 +14,7 @@ const ContactInfo = () => {
                 <div className="bg-white rounded-lg shadow-md p-6 w-60 transition-transform transform hover:translate-y-[-10px] hover:shadow-lg">
                     <FaEnvelope className="text-4xl text-blue-500 mb-4 mx-auto" />
                     <h3 className="text-2xl font-medium mb-2 text-gray-800">Email</h3>
-                    <p className="text-gray-600">info@example.com</p>
+                    <p className="text-gray-600">microWorker@info.com</p>
                 </div>
                 <div className="bg-white rounded-lg shadow-md p-6 w-60 transition-transform transform hover:translate-y-[-10px] hover:shadow-lg">
                     <FaMapMarkerAlt className="text-4xl text-blue-500 mb-4 mx-auto" />

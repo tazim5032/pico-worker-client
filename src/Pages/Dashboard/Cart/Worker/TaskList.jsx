@@ -46,7 +46,7 @@ const TaskList = () => {
 
     return (
         <div className="mb-48">
-            <div className="flex gap-8 justify-end mr-8">
+            <div className="flex flex-col sm:flex-row gap-8 justify-end mr-8">
 
                 <div>
                     <div className="flex pt-4">

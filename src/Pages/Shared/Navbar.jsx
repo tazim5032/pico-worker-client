@@ -62,6 +62,11 @@ const Navbar = () => {
                                     Dashboard</Link></li>
                             }
                             {
+                                !isTaskCreator && !isAdmin && user &&
+                                <li><Link to="/dashboard/userHome">
+                                    Dashboard</Link></li>
+                            }
+                            {
                                 !isAdmin && user &&
 
                                 <li>
@@ -77,7 +82,7 @@ const Navbar = () => {
                                 user ? <>
                                     {/* <span>{user.displayName}</span> */}
 
-                                    <li><Link to='/signup'>Profile</Link></li>
+                                    <li><Link to='/profile'>Profile</Link></li>
                                     <button onClick={handleLogOut}
                                         className="btn btn-ghost bg-red-700">Logout</button>
 
@@ -119,6 +124,11 @@ const Navbar = () => {
                                 Dashboard</Link></li>
                         }
                         {
+                            !isTaskCreator && !isAdmin && user &&
+                            <li><Link to="/dashboard/userHome">
+                                Dashboard</Link></li>
+                        }
+                        {
                             !isAdmin && user &&
 
                             <li>
@@ -132,7 +142,7 @@ const Navbar = () => {
                             user ? <>
                                 {/* <span>{user.displayName}</span> */}
 
-                                <li><Link to='/signup'>Profile</Link></li>
+                                <li><Link to='/profile'>Profile</Link></li>
 
                                 <button onClick={handleLogOut}
                                     className="btn btn-ghost bg-red-700 pb-2">Logout</button>

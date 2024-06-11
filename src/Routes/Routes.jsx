@@ -4,6 +4,7 @@ import {
 import ContactInfo from "../Components/ContactInfo";
 import ErrorPage from "../Components/ErrorPage";
 import PrivateRoute from "../Components/PrivateRoute";
+import Profile from "../Components/Profile";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
         element: <ContactInfo></ContactInfo>
       },
       {
+        path: 'profile',
+        element:<PrivateRoute><Profile></Profile></PrivateRoute>
+      },
+      {
         path: 'details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>
       },
@@ -64,11 +69,6 @@ export const router = createBrowserRouter([
       {
         path: 'userSubmissions',
         element: <UserSubmissions></UserSubmissions>
-
-      },
-      {
-        path: 'userHome',
-        element: <UserHome></UserHome>
 
       },
       {

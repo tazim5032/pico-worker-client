@@ -14,7 +14,7 @@ const Details = () => {
     const navigate = useNavigate();
 
     const [startDate, setStartDate] = useState(new Date())
-    console.log(startDate);
+   // console.log(startDate);
     // const [task, setAssignment] = useState({});
 
     const [task, setTask] = useState({});
@@ -69,7 +69,7 @@ const Details = () => {
 
         };
 
-        console.log(info);
+        //console.log(info);
 
         fetch(`http://localhost:5000/submission`, {
             method: 'POST',
@@ -90,7 +90,7 @@ const Details = () => {
                     })
 
                     //navigate('/my-submission')
-                    navigate('/')
+                    navigate('/dashboard/userSubmissions')
                 }
             })
 
