@@ -113,7 +113,7 @@ const AddTask = () => {
 
     return (
         <div>
-            <div className="flex gap-8 justify-end mr-8">
+            <div className="flex gap-8 justify-end mr-8 mb-24">
 
                 <div>
                     <div className="flex pt-4">

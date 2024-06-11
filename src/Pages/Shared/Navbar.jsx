@@ -65,12 +65,10 @@ const Navbar = () => {
                                 !isAdmin && user &&
 
                                 <li>
-                                    <Link to='/dashboard'>
-                                        <button className="btn">
-                                            <FaCoins className="text-yellow-500 text-xl" />
-                                            <div className="badge badge-secondary">{users?.coin}</div>
-                                        </button>
-                                    </Link>
+                                    <div className="btn pb-2">
+                                        <FaCoins className="text-yellow-500 text-xl" />
+                                        <div className="">{users?.coin}</div>
+                                    </div>
                                 </li>
                             }
 

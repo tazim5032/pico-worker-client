@@ -51,7 +51,7 @@ const PendingTask = () => {
     
 
     return (
-        <section className='container px-4 mx-auto pt-24'>
+        <section className='container px-4 mx-auto pt-24 mb-96'>
             <Helmet>
                 <title>Pending task</title>
             </Helmet>

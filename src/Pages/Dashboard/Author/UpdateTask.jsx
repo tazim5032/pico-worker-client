@@ -43,7 +43,7 @@ const UpdateTask = () => {
 
     }
     return (
-        <div>
+        <div className="mb-96">
             <SectionTitle heading="Add a Task" subHeading="What's new?" ></SectionTitle>
             <div className="sm:px-12">
                 <form onSubmit={handleSubmit(onSubmit)}>

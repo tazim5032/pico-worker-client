@@ -35,7 +35,7 @@ const PaymentHistory = () => {
     }, [user, axiosSecure]);
 
     return (
-        <div className="">
+        <div className="mb-96">
 
             <div className="flex gap-8 justify-end mr-8">
 
