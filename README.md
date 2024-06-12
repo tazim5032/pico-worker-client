@@ -4,8 +4,8 @@ Welcome to the MicroTask Project! This project is a micro-task management system
 
 - [Live Link](https://micro-task-55c95.web.app/).
 
-Admin email: tazim@gmail.com
-Admin Password: Aaaaaa
+- Admin email: tazim@gmail.com
+- Admin Password: Aaaaaa
 
 ## Table of Contents
 
