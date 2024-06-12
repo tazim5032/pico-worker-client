@@ -67,7 +67,7 @@ To run the project locally, follow these steps:
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/microtask.git
+    git clone https://github.com/tazim5032/microtask.git
     cd microtask
     ```
 
