@@ -78,7 +78,7 @@ const Login = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
-                <title>Bistro Boss | Login</title>
+                <title> Login</title>
             </Helmet>
             <div className="hero-content  w-full sm:w-1/3 rounded-xl">
 

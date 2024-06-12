@@ -5,44 +5,44 @@ const topEarnersData = [
   {
     id: 1,
     name: "John Doe",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://i.ibb.co/9sdTRJW/Fakhrul-Islam-removebg-preview.png",
     coins: 500,
-    tasksCompleted: 35
+    tasksCompleted: 15
   },
   {
     id: 2,
     name: "Jane Smith",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://i.ibb.co/Jqx0xM4/agent2.png",
     coins: 480,
-    tasksCompleted: 30
+    tasksCompleted: 14
   },
   {
     id: 3,
     name: "Alice Johnson",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://i.ibb.co/N2GL7ys/Capture.png",
     coins: 460,
-    tasksCompleted: 28
+    tasksCompleted: 9
   },
   {
     id: 4,
     name: "Bob Brown",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://i.ibb.co/Twk7pxJ/agent3.png",
     coins: 440,
-    tasksCompleted: 25
+    tasksCompleted: 9
   },
   {
     id: 5,
     name: "Emma Wilson",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://i.ibb.co/93RbmGJ/agent1.png",
     coins: 420,
-    tasksCompleted: 23
+    tasksCompleted: 10
   },
   {
     id: 6,
     name: "Michael Lee",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://i.ibb.co/tQpSCdk/Capture.png",
     coins: 400,
-    tasksCompleted: 20
+    tasksCompleted: 8
   }
 ];
 

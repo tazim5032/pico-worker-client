@@ -131,7 +131,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateTask/:id',
         element: <TaskerRouter><UpdateTask></UpdateTask></TaskerRouter>,
-        loader: ({ params }) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
+        loader: ({ params }) => fetch(`https://pico-worker-server.vercel.app/updateProduct/${params.id}`)
       },
 
 

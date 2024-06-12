@@ -4,7 +4,7 @@ import Card from "../../Components/Card";
 const TopTasks = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/all-featured-task`)
+        fetch(`https://pico-worker-server.vercel.app/all-featured-task`)
             .then(res => res.json())
             .then(data => {
                 setItems(data);

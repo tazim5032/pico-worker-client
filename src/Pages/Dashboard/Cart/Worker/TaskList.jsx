@@ -31,7 +31,7 @@ const TaskList = () => {
     }, [currentPage]);
 
     const fetchTasks = (page) => {
-        fetch(`http://localhost:5000/all-task?page=${page}&limit=${itemsPerPage}`)
+        fetch(`https://pico-worker-server.vercel.app/all-task?page=${page}&limit=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data.tasks);

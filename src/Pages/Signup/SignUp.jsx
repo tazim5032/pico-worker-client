@@ -67,6 +67,7 @@ const SignUp = () => {
                     email: data.email,
                     accountType: accountType,
                     coin: coin,
+                   // image: imageUrl,
                     total_income: total_income,
                 };
 
@@ -94,7 +95,7 @@ const SignUp = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
-                <title>Bistro Boss | Signup</title>
+                <title> Signup</title>
             </Helmet>
             <h1 className="text-2xl text-center my-10 pt-6">Please Register</h1>
 

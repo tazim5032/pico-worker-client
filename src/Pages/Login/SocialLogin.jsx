@@ -10,8 +10,8 @@ const SocialLogIn = () => {
     const axiosPublic = useAxiosPublic();
 
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location?.state || '/';
+  //  const location = useLocation();
+  //  const from = location?.state || '/';
     //const from = location?.state?.from?.pathname || '/';
 
     const handleSocialLogin = (socialProvider) =>{
@@ -25,6 +25,7 @@ const SocialLogIn = () => {
                     name: result.user.displayName,
                     accountType: 'worker',
                     coin: coin,
+                    //image: result.user.photoURL,
                     total_income,
                     
                 }

@@ -71,7 +71,7 @@ const WithdrawForm = () => {
 
         const withdrawData = {
             worker_email: user.email,
-            worker_name: user.displayName,
+            worker_name: currentUser.name,
             withdraw_coin: withdrawCoin,
             withdraw_amount: withdrawAmount,
             payment_system: paymentSystem,
@@ -89,8 +89,8 @@ const WithdrawForm = () => {
                 });
 
                 // Optional: refetch user data to update the UI
-                const { data } = await axiosSecure.get(`/user/${user?.email}`);
-                setCoins(data.coin);
+                //const { data } = await axiosSecure.get(`/user/${user?.email}`);
+                //setCoins(data.coin);
             } else {
                 throw new Error('Failed to process withdrawal request');
             }

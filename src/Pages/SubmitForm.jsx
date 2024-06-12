@@ -20,7 +20,7 @@ const SubmitForm = () => {
 
     const getData = async () => {
         const { data } = await axios(
-            `http://localhost:5000/details/${id}`
+            `https://pico-worker-server.vercel.app/details/${id}`
         )
         setAssignment(data)
     }
@@ -63,7 +63,7 @@ const SubmitForm = () => {
 
         console.log(info);
 
-        fetch(`http://localhost:5000/submission`, {
+        fetch(`https://pico-worker-server.vercel.app/submission`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
