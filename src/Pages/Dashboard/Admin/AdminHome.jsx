@@ -3,6 +3,9 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaUsers, FaCoins, FaDollarSign } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import AdminWithdrawRequests from "./AdminWithdrawRequests";
+import Helmet from "react-helmet";
+import useAuth from "../../../Hooks/useAuth";
+import { IoIosNotifications } from "react-icons/io";
 
 const AdminHome = () => {
     const axiosSecure = useAxiosSecure();
@@ -11,6 +14,23 @@ const AdminHome = () => {
     const [totalAmount, setTotalAmount] = useState(0);
    // const [completedPayments, setCompletedPayments] = useState(0);
     const [totalPaymentsCount, setTotalPaymentsCount] = useState(0);
+
+    const { user } = useAuth();
+
+   // const axiosSecure = useAxiosSecure();
+    const [users, setUsers] = useState([]);
+  //  const [tasks, setTasks] = useState([]);
+
+    //total available coin find
+    useEffect(() => {
+        getData()
+    }, [user])
+
+    const getData = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setUsers(data)
+    }
 
     useEffect(() => {
         fetchData();
@@ -37,7 +57,47 @@ const AdminHome = () => {
 
     return (
         <div className="mt-12 sm:ml-4 mb-96">
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
+            <div className="flex flex-col sm:flex-row gap-8 justify-end mr-8">
 
+                <div className="">
+                    <div className="flex pt-4">
+                        
+                        <div className="badge badge-primary font-bold ml-1">Admin</div>
+                    </div>
+                    <div className="mt-4 font-bold">
+                        Name: {user?.displayName}</div>
+
+                </div>
+
+                <div>
+                    <label tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                        title={user?.displayName}
+                    >
+
+                        <div className="tool w-10 rounded-full" >
+                            <img className="idd"
+                                src={user?.photoURL ||
+                                    "https://i.ibb.co/sjymvr8/Capture4.png"} />
+                        </div>
+
+
+                    </label>
+
+
+
+                    <div className="font-bold">
+                        Role: {users?.accountType}</div>
+                </div>
+                <div>
+                    <IoIosNotifications className="text-4xl mt-4" />
+                </div>
+
+
+            </div>
             
             <h2 className="text-3xl mb-8">Admin Dashboard</h2>
 

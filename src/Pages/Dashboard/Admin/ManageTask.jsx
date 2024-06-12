@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
+import {  FaCoins, FaTrashAlt } from "react-icons/fa";
+import { IoIosNotifications } from "react-icons/io";
+
 import Swal from "sweetalert2";
 import SectionTitle from "../../../Components/SectionTitle";
 import useAuth from "../../../Hooks/useAuth";
@@ -14,6 +16,22 @@ const ManageTask = () => {
     const [tasks, setTasks] = useState([]);
     const [selectedTask, setSelectedTask] = useState(null);
 
+   // const { user } = useAuth();
+
+   // const axiosSecure = useAxiosSecure();
+    const [users, setUsers] = useState([]);
+   // const [tasks, setTasks] = useState([]);
+
+    //total available coin find
+    useEffect(() => {
+        getDataa()
+    }, [user])
+
+    const getDataa = async () => {
+        const { data } = await axiosSecure(
+            `/user/${user?.email}`)
+        setUsers(data)
+    }
 
     useEffect(() => {
         getData()
@@ -67,7 +85,48 @@ const ManageTask = () => {
 
     return (
         <div>
-            <SectionTitle heading="Manage All Task" subHeading="Hurry up"></SectionTitle>
+            <Helmet>
+                <title>Manage Task</title>
+            </Helmet>
+            <div className="flex flex-col sm:flex-row gap-8 justify-end mr-8">
+
+                <div className="">
+                    <div className="flex pt-4">
+                       
+                        <div className="badge badge-primary font-bold ml-1">Admin</div>
+                    </div>
+                    <div className="mt-4 font-bold">
+                        Name: {user?.displayName}</div>
+
+                </div>
+
+                <div>
+                    <label tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                        title={user?.displayName}
+                    >
+
+                        <div className="tool w-10 rounded-full" >
+                            <img className="idd"
+                                src={user?.photoURL ||
+                                    "https://i.ibb.co/sjymvr8/Capture4.png"} />
+                        </div>
+
+
+                    </label>
+
+
+
+                    <div className="font-bold">
+                        Role: {users?.accountType}</div>
+                </div>
+                <div>
+                    <IoIosNotifications className="text-4xl mt-4" />
+                </div>
+
+
+            </div>
+            <SectionTitle heading="Manage All Task" subHeading="Lets Manage"></SectionTitle>
 
             <div>
                 <div className="overflow-x-auto">
@@ -114,7 +173,7 @@ const ManageTask = () => {
 
                                     <td>
                                         <button className='btn'
-                                            onClick={() => openModal(item)}>View Submissions</button>
+                                            onClick={() => openModal(item)}>View Task</button>
                                     </td>
                                     <td>
                                         <button

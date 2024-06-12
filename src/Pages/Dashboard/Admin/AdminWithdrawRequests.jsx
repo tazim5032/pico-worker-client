@@ -1,11 +1,22 @@
 import { useEffect, useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaCoins } from 'react-icons/fa';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
+import { IoIosNotifications } from 'react-icons/io';
+
 
 const AdminWithdrawRequests = () => {
     const axiosSecure = useAxiosSecure();
     const [withdrawRequests, setWithdrawRequests] = useState([]);
+
+    const { user } = useAuth();
+
+    // const axiosSecure = useAxiosSecure();
+    //const [users, setUsers] = useState([]);
+    //  const [tasks, setTasks] = useState([]);
+
+   
 
     useEffect(() => {
         fetchWithdrawRequests();
@@ -42,6 +53,7 @@ const AdminWithdrawRequests = () => {
 
     return (
         <div className="mt-12 sm:ml-4 mb-96">
+            
             <h2 className="text-3xl mb-8">Withdrawal Requests</h2>
 
             <div className="overflow-x-auto">

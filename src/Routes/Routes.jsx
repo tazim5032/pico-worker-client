@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import ContactInfo from "../Components/ContactInfo";
 import ErrorPage from "../Components/ErrorPage";
+import ForbiddenPage from "../Components/ForbiddenPage";
 import PrivateRoute from "../Components/PrivateRoute";
 import Profile from "../Components/Profile";
 import Dashboard from "../Layout/Dashboard";
@@ -20,12 +21,15 @@ import PendingTask from "../Pages/Dashboard/Author/PendingTask";
 import UpdateTask from "../Pages/Dashboard/Author/UpdateTask";
 import TaskList from "../Pages/Dashboard/Cart/Worker/TaskList";
 import UserSubmissions from "../Pages/Dashboard/Cart/Worker/UserSubmissions";
+import Common from "../Pages/Dashboard/Common";
 import UserHome from "../Pages/Dashboard/User/UserHome";
 import Withdraw from "../Pages/Dashboard/User/Withdraw";
 import Details from "../Pages/Home/Details";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
+import AdminRoute from "./AdminRoute";
+import TaskerRouter from "./TaskerRouter";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +60,10 @@ export const router = createBrowserRouter([
         path: 'details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>
       },
+      {
+        path: 'forbidden',
+        element: <ForbiddenPage></ForbiddenPage>
+      },
       
       
     ]
@@ -64,6 +72,12 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+
+      {
+        path: 'common',
+        element: <Common></Common>
+
+      },
 
       // user
       {
@@ -88,35 +102,35 @@ export const router = createBrowserRouter([
       //author
       {
         path: 'authorHome',
-        element: <AuthorHome></AuthorHome>
+        element: <TaskerRouter><AuthorHome></AuthorHome></TaskerRouter>
       },
       {
         path: 'add-new-task',
-        element: <AddTask></AddTask>
+        element: <TaskerRouter><AddTask></AddTask></TaskerRouter>
       },
       {
         path: 'my-task-list',
-        element: <MyTaskList></MyTaskList>
+        element: <TaskerRouter><MyTaskList></MyTaskList></TaskerRouter>
       },
       {
         path: 'payment',
-        element: <PaymentOptions></PaymentOptions>
+        element: <TaskerRouter><PaymentOptions></PaymentOptions></TaskerRouter>
       },
       {
         path: 'make-payment',
-        element: <MakePayment></MakePayment>
+        element: <TaskerRouter><MakePayment></MakePayment></TaskerRouter>
       },
       {
         path: 'history',
-        element: <PaymentHistory></PaymentHistory>
+        element: <TaskerRouter><PaymentHistory></PaymentHistory></TaskerRouter>
       },
       {
         path: 'pending',
-        element: <PendingTask></PendingTask>
+        element: <TaskerRouter><PendingTask></PendingTask></TaskerRouter>
       },
       {
         path: 'updateTask/:id',
-        element: <UpdateTask></UpdateTask>,
+        element: <TaskerRouter><UpdateTask></UpdateTask></TaskerRouter>,
         loader: ({ params }) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
       },
 
@@ -125,15 +139,15 @@ export const router = createBrowserRouter([
 
       {
         path: 'adminHome',
-        element: <AdminHome></AdminHome>
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
       },
       {
         path: 'manage-user',
-        element: <ManageUser></ManageUser>
+        element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
       },
       {
         path: 'manage-task',
-        element: <ManageTask></ManageTask>
+        element: <AdminRoute><ManageTask></ManageTask></AdminRoute>
       },
     ]
   }

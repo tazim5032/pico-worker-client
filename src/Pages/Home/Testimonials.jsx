@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
 import { FaQuoteLeft } from "react-icons/fa";
+import Helmet from 'react-helmet';
 
 const testimonialsData = [
     {
@@ -31,6 +32,7 @@ const testimonialsData = [
 const Testimonials = () => {
     return (
         <section className="py-12">
+            
             <div className="container mx-auto px-4">
                 <h1 className="text-3xl font-bold text-center mb-8">Testimonials</h1>
                 <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg relative">

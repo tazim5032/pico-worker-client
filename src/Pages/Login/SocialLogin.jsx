@@ -32,7 +32,7 @@ const SocialLogIn = () => {
                 axiosPublic.post('/users', userInfo)
                 .then(res =>{
                     console.log(res.data);
-                    navigate(from);
+                    navigate('/dashboard/common');
                 })
               
            }

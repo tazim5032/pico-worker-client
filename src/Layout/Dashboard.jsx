@@ -1,7 +1,7 @@
 import { FaAddressBook, FaBook, FaCoins, FaEnvelope, FaHistory, FaHome, FaList, FaUsers }
     from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { IoIosNotifications, IoMdAdd } from "react-icons/io";
+import {  IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 //import useAxiosSecure from "../Hooks/useAxiosSecure";
 //import { useEffect, useState } from "react";
@@ -42,8 +42,9 @@ const Dashboard = () => {
 
             {/* sidebar */}
             <div className="w-48 sm:w-64 min-h-screen bg-cyan-400">
-                <Link className="btn btn-ghost text-xl text-black font-bold" to='/'>
-                    Micro<span className="text-white">Task</span></Link>
+                <Link className="btn btn-ghost text-xl mt-2" to='/'>
+                    <img src="https://i.ibb.co/t4yQbSp/logo.png" className="h-12 w-12 rounded-xl" alt="" />
+                </Link>
                 <ul className="menu p-4">
                     {
                         isAdmin ? <>
@@ -160,9 +161,10 @@ const Dashboard = () => {
 
             {/* dashboard content */}
             <div className="flex-1 mt-12 ">
-               
+
                 {/* <Notifications userEmail={user.email} /> */}
                 <Outlet></Outlet>
+                <div className='mb-[600px]'></div>
                 <Footer></Footer>
             </div>
         </div>

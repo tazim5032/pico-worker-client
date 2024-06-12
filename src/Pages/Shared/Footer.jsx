@@ -12,8 +12,8 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-semibold mb-4">Contact Info</h3>
                     <p>123 Main Street</p>
-                    <p>Anytown, USA 12345</p>
-                    <p>Email: info@example.com</p>
+                    <p>DownTown, USA 12345</p>
+                    <p>Email: microTasker@info.com</p>
                     <p>Phone: (123) 456-7890</p>
                 </div>
                 {/* Career Options */}
