@@ -2,6 +2,11 @@
 
 Welcome to the MicroTask Project! This project is a micro-task management system with different user roles and functionalities, allowing task creation, task completion, and financial transactions for task rewards. The live version of the project can be found [here](https://micro-task-55c95.web.app/).
 
+- [Live Link](https://micro-task-55c95.web.app/).
+
+Admin email: tazim@gmail.com
+Admin Password: Aaaaaa
+
 ## Table of Contents
 
 - [Introduction](#introduction)
