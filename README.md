@@ -1,6 +1,5 @@
 # MicroTask - A Micro-Task and Earning Platform
 
-- assignment12_category_0019
 
 Welcome to the MicroTask Project! This project is a micro-task management system with different user roles and functionalities, allowing task creation, task completion, and financial transactions for task rewards. The live version of the project can be found [here](https://micro-task-55c95.web.app/).
 
